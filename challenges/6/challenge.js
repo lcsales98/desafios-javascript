@@ -26,6 +26,13 @@
  * }
  */
 
-const extractSize = htmlTemplate => {}
+const extractSize = htmlTemplate => {
+    let searchWidth = new RegExp(/width:\ \d*/).exec(htmlTemplate);
+    let searchHeight = new RegExp(/height:\ \d*/).exec(htmlTemplate);
+    if(!searchHeight & !searchWidth) return { width: 0, height: 0 };
+    let width = searchWidth[0].split(': ');
+    let height = searchHeight[0].split(': ');
+    return JSON.parse(`{ "${width[0]}": ${width[1]}, "${height[0]}": ${height[1]} }`)
+}
 
 module.exports = extractSize

@@ -32,6 +32,17 @@
 const { setData, setError, setLoading } = require('../../utils/stateHandlers')
 const api = require('../../utils/api') // Promise
 
-const doRequest = () => {}
+const doRequest = () => {
+
+    setError(false)
+    setLoading(true);
+
+    api().then((res) => {
+        setData(res);
+        setLoading(false)
+    }).catch((err) => {
+        return setError(true)
+    })
+}
 
 module.exports = doRequest

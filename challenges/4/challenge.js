@@ -52,6 +52,40 @@
  *  }
  */
 
-const normalizeData = unormalized => {}
+const normalizeData = (unormalized) => {
+    //formata input para output esperado.
+    let output = {
+        results: {
+            [`${unormalized.id}`]: {
+                id: unormalized.id,
+                user: unormalized.user.id,
+                reports: unormalized.reports.map(report => {
+                    return report.id;
+                }),
+            },
+        },
+        users: {
+            [`${unormalized.user.id}`]: {
+                id: unormalized.user.id,
+                name: unormalized.user.name
+            }
+        },
+        reports: 
+            (() => {
+                let obj = {};
+                unormalized.reports.forEach(element => {
+                    obj[`${element.id}`] = {
+                        id: element.id,
+                        user: unormalized.user.id,
+                        document: element.result.document,
+                        status: element.result.status
+                    }
+                });
+                return obj;
+            })()
+    };
+
+    return output;
+}
 
 module.exports = normalizeData

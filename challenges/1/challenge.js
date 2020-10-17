@@ -9,6 +9,10 @@
  *
  */
 
-const sumArguments = arr => {}
+const sumArguments = (...args) => {
+    let acc;
+    args.forEach(element => (acc === undefined) ? acc = element : acc = acc + element );
+    return acc;
+}
 
 module.exports = sumArguments
