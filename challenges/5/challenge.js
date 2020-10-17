@@ -33,15 +33,16 @@ const { setData, setError, setLoading } = require('../../utils/stateHandlers')
 const api = require('../../utils/api') // Promise
 
 const doRequest = () => {
+  setError(false)
+  setLoading(true)
 
-    setError(false)
-    setLoading(true);
-
-    api().then((res) => {
-        setData(res);
-        setLoading(false)
-    }).catch((err) => {
-        return setError(true)
+  api()
+    .then(function thenCallback(res) {
+      setData(res)
+      setLoading(false)
+    })
+    .catch(function catchCallback(err) {
+      return setError(true)
     })
 }
 

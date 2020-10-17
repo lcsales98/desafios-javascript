@@ -10,9 +10,9 @@
  */
 
 const sumArguments = (...args) => {
-    let acc;
-    args.forEach(element => (acc === undefined) ? acc = element : acc = acc + element );
-    return acc;
+  return args.reduce((acc, element) => {
+    return (acc += element)
+  })
 }
 
 module.exports = sumArguments
