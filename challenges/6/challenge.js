@@ -28,14 +28,14 @@
 
 const extractSize = (htmlTemplate) => {
   function searchWidth() {
-    const REGEX = new RegExp(/width:\ \d*/).exec(htmlTemplate)
-    if (!REGEX) return true
-    return REGEX[0].split(': ')
+    const REGEXP = /width:\ \d*/.exec(htmlTemplate)
+    if (!REGEXP) return true
+    return REGEXP[0].split(': ')
   }
   function searchHeight() {
-    const REGEX = new RegExp(/height:\ \d*/).exec(htmlTemplate)
-    if (!REGEX) return true
-    return REGEX[0].split(': ')
+    const REGEXP = /height:\ \d*/.exec(htmlTemplate)
+    if (!REGEXP) return true
+    return REGEXP[0].split(': ')
   }
 
   const WIDTH = searchWidth()
