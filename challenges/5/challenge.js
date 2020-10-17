@@ -37,10 +37,15 @@ const doRequest = () => {
   setLoading(true)
 
   api()
-    .then(function thenCallback(res) {
-      setData(res)
-      setLoading(false)
-    })
+    .then(
+      function thenResolvedCallback(res) {
+        setData(res)
+        setLoading(false)
+      },
+      function thenRejectCallback(reason) {
+        setError(true)
+      },
+    )
     .catch(function catchCallback(err) {
       return setError(true)
     })

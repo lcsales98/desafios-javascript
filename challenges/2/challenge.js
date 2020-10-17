@@ -19,9 +19,9 @@
 const isPrime = require('../../utils/isPrime')
 
 const sumPrimes = (n) => {
-  let accumulator = 0
-  for (let num = 1; num <= n; num++) if (isPrime(num)) accumulator = accumulator + num
-  return accumulator
+  let acc = 0
+  for (let num = 1; num <= n; num++) if (isPrime(num)) acc = acc + num
+  return acc
 }
 
 module.exports = sumPrimes
